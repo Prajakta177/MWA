@@ -1,0 +1,103 @@
+/* Color Palette */
+:root {
+    --primary-bg: #F5EFE7;
+    --primary-text: #333333;
+    --accent: #D4B29D;
+    --button-bg: #8C6450;
+    --button-text: #FFFFFF;
+    --link-color: #C7A17A;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Auth Container */
+.auth-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.auth-container h2 {
+    margin-bottom: 15px;
+}
+
+.auth-container input {
+    width: 90%; /* Reduce width slightly */
+    max-width: 250x; /* Set a maximum width */
+    padding: 10px;
+    margin: 10px auto 10px 0; /* Align slightly to the left */
+    display: block;
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+}
+
+
+.auth-container button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-container button:hover {
+    background-color: var(--accent);
+}
+
+.auth-container p {
+    margin-top: 10px;
+}
+
+.auth-container a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+.auth-container {
+    text-align: center; /* Center the content */
+}
+
+.auth-container input,
+.auth-container button {
+    width: 100%; /* Make both input and button full width */
+    max-width: 280px; /* Ensure both have the same maximum width */
+    padding: 10px;
+    margin: 10px auto; /* Center the elements */
+    display: block;
+    border-radius: 5px;
+}
+
+.auth-container input {
+    border: 1px solid var(--accent);
+}
+
+.auth-container button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auth-container button:hover {
+    background-color: var(--accent);
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Digital Wardrobe</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f3ec;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('hero-image.jpg') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            width: 60%;
+            max-width: 800px;
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            padding: 60px 10%;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: #8C6450;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Features Section */
+        .features {
+            text-align: center;
+            padding: 60px 10%;
+            background: #f9f5f0;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            color: #8C6450;
+            margin-bottom: 20px;
+        }
+
+        .feature-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .feature-box h3 {
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        /* Team Section */
+        .team {
+            text-align: center;
+            padding: 60px 10%;
+        }
+
+        .team h2 {
+            font-size: 2.5rem;
+            color: #8C6450;
+            margin-bottom: 30px;
+        }
+
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #8C6450;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Digital Wardrobe</h1>
+        <p>Your fashion organizer, outfit planner, and style companion all in one place.</p>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <h2>Who We Are</h2>
+            <p>
+                Our digital wardrobe helps you organize, plan, and style your outfits effortlessly. 
+                Whether you're looking to declutter, get fashion inspiration, or simplify your 
+                morning routine, we are here for you!
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose Us?</h2>
+        <div class="feature-container">
+            <div class="feature-box">
+                <h3>👗 Smart Wardrobe Management</h3>
+                <p>Store and categorize outfits easily.</p>
+            </div>
+            <div class="feature-box">
+                <h3>📅 Outfit Planning</h3>
+                <p>Plan your looks for any occasion.</p>
+            </div>
+            <div class="feature-box">
+                <h3>📷 Style Inspiration</h3>
+                <p>Discover new fashion trends.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="p1.jpg" alt="Alice Johnson">
+                <h3>Shyamali</h3>
+                <p> Fashion Tech Wizard </p>
+            </div>
+            <div class="team-member">
+                <img src="p2.jpg" alt="Michael Smith">
+                <h3>Prajakta</h3>
+                <p>Chief Outfit Organizer </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Digital Wardrobe. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+

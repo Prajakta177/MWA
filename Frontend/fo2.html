@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Evening Outfits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5EFE7;
+            text-align: center;
+            color: #8C6450;
+            padding: 20px;
+        }
+        header {
+            background-color: #8C6450;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .outfit-section {
+            display: none;
+        }
+        .grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .grid-item {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .grid-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #D4B29D;
+            border: none;
+            padding: 8px 12px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: black;
+        }
+        .btn:hover {
+            background-color: #C7A17A;
+        }
+        .outfit-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .outfit-preview img {
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Elegant Evening Outfits</h1>
+        <a href="index.html" style="color: white;">Back to Home</a>
+    </header>
+
+    <div class="container">
+        <p>Choose your gender to see elegant evening outfit recommendations.</p>
+
+        <div class="gender-select">
+            <label for="gender">Select Your Gender:</label>
+            <select id="gender" onchange="showOutfits()">
+                <option value="">--Select--</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+        </div>
+
+        <h2 id="suggestion-message" style="display: none;">Elegant Evening Outfit Suggestions</h2>
+
+        <div id="female-outfits" class="outfit-section">
+            <h3>Dresses</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <img src="images/women-dress1.jpg" alt="Dress">
+                    <button class="btn" onclick="addToClothing('women-dress1.jpg')">Add to Clothing</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="male-outfits" class="outfit-section">
+            <h3>Suits</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <img src="images/men-suit1.jpg" alt="Suit">
+                    <button class="btn" onclick="addToClothing('men-suit1.jpg')">Add to Clothing</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="outfit-preview" class="outfit-preview" style="display: none;">
+            <h2>Your Custom Outfit</h2>
+            <div id="preview-images"></div>
+        </div>
+    </div>
+
+    <script>
+        function showOutfits() {
+            const gender = document.getElementById("gender").value;
+            document.getElementById("suggestion-message").style.display = gender ? "block" : "none";
+            document.getElementById("female-outfits").style.display = (gender === "female") ? "block" : "none";
+            document.getElementById("male-outfits").style.display = (gender === "male") ? "block" : "none";
+        }
+
+        let selectedClothing = [];
+
+        function addToClothing(image) {
+            if (selectedClothing.length < 2) {
+                selectedClothing.push(image);
+                updatePreview();
+            } else {
+                alert("You can only add one dress/suit.");
+            }
+        }
+
+        function updatePreview() {
+            const previewDiv = document.getElementById("preview-images");
+            previewDiv.innerHTML = "";
+            selectedClothing.forEach(img => {
+                const imageElement = document.createElement("img");
+                imageElement.src = "images/" + img;
+                previewDiv.appendChild(imageElement);
+            });
+            document.getElementById("outfit-preview").style.display = "block";
+        }
+    </script>
+</body>
+</html>

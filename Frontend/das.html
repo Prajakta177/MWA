@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Wardrobe Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #F5EFE7; }
+    </style>
+</head>
+<body class="bg-[#F5EFE7] text-[#333333]">
+
+    <!-- Sidebar -->
+    <div class="flex h-screen">
+        <div id="sidebar" class="w-64 bg-[#8C6450] text-white p-5 transition-all rounded-r-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-[#C7A17A]">Wardrobe</h2>
+            <ul class="mt-5 space-y-4">
+                <li><button onclick="showSection('profile')" class="w-full text-left hover:text-[#E6C4C0]">📌 Profile Summary</button></li>
+                <li><button onclick="showSection('wardrobe')" class="w-full text-left hover:text-[#E6C4C0]">👕 My Wardrobe</button></li>
+                <li><button onclick="showSection('outfits')" class="w-full text-left hover:text-[#E6C4C0]">👗 My Outfits</button></li>
+                <li><button onclick="showSection('settings')" class="w-full text-left hover:text-[#E6C4C0]">⚙️ Settings</button></li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <div id="content" class="bg-white shadow-lg p-6 rounded-2xl">
+                <h1 class="text-3xl font-bold text-[#8C6450]">Welcome to Your Wardrobe</h1>
+                <p class="text-[#333333] mt-2">Select an option from the sidebar to begin.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedItems = [];
+
+        window.onload = function () {
+            showSection('profile'); // Load Profile Summary by default
+        };
+
+        function showSection(section) {
+            let content = document.getElementById("content");
+            if (section === "wardrobe") {
+                loadWardrobe();
+                return;
+            }
+            if (section === "outfits") {
+                loadOutfits();
+                return;
+            }
+            const sections = {
+                profile: `
+                    <div class="flex items-center space-x-6">
+                        <img src="https://via.placeholder.com/150" class="w-32 h-32 rounded-full border-4 border-[#C7A17A]">
+                        <div>
+                            <h2 class="text-3xl font-bold text-[#8C6450]">Jane Doe</h2>
+                            <p class="text-lg">Fashion Enthusiast | Style Creator</p>
+                            <button class="mt-2 bg-[#D4B29D] text-white px-4 py-2 rounded-lg hover:bg-[#8C6450]">Edit Profile</button>
+                        </div>
+                    </div>
+                `,
+                types: `<h2 class="text-2xl font-bold text-[#8C6450]">🎭 Outfit Types</h2>`,
+                settings: `<h2 class="text-2xl font-bold text-[#8C6450]">⚙️ Settings</h2>`
+            };
+            content.innerHTML = sections[section] || "<p>Section not found.</p>";
+        }
+
+        function loadWardrobe() {
+            let content = document.getElementById("content");
+            let wardrobeItems = JSON.parse(localStorage.getItem("wardrobe")) || [];
+            let wardrobeHTML = `
+                <h2 class="text-2xl font-bold text-[#8C6450]">👕 My Wardrobe</h2>
+                <div class="mt-6 grid grid-cols-3 gap-6">
+            `;
+            wardrobeItems.forEach((item, index) => {
+                wardrobeHTML += `
+                    <div class="bg-white p-4 rounded-lg shadow-lg text-center">
+                        <img src="${item.image}" class="mx-auto h-32 w-32 object-cover">
+                        <h3 class="text-lg font-semibold mt-2">${item.name}</h3>
+                        <div class="flex justify-center gap-2 mt-2">
+                            <button class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-700" onclick="selectItem(${index})">Select</button>
+                            <button class="bg-red-500 text-white px-2 py-1 rounded-md text-sm hover:bg-red-700" onclick="removeFromWardrobe(${index})">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+            wardrobeHTML += `</div>
+                <button class="mt-4 bg-[#8C6450] text-white px-4 py-2 rounded-lg hover:bg-[#6B4939]" onclick="createOutfit()">Create Outfit</button>
+            `;
+            content.innerHTML = wardrobeHTML;
+        }
+
+        function removeFromWardrobe(index) {
+            let wardrobeItems = JSON.parse(localStorage.getItem("wardrobe")) || [];
+            wardrobeItems.splice(index, 1);
+            localStorage.setItem("wardrobe", JSON.stringify(wardrobeItems));
+            loadWardrobe();
+        }
+
+        function selectItem(index) {
+            let wardrobeItems = JSON.parse(localStorage.getItem("wardrobe")) || [];
+            if (selectedItems.length < 2) {
+                selectedItems.push(wardrobeItems[index]);
+                alert(`${wardrobeItems[index].name} selected!`);
+            } else {
+                alert("You can only select 2 items (top and bottom) to create an outfit.");
+            }
+        }
+
+        function createOutfit() {
+            if (selectedItems.length !== 2) {
+                alert("Please select exactly 2 items (a top and a bottom) to create an outfit.");
+                return;
+            }
+            let outfits = JSON.parse(localStorage.getItem("outfits")) || [];
+            outfits.push({ top: selectedItems[0], bottom: selectedItems[1] });
+            localStorage.setItem("outfits", JSON.stringify(outfits));
+            selectedItems = [];
+            alert("Outfit created successfully!");
+            loadOutfits();
+        }
+
+        function loadOutfits() {
+            let content = document.getElementById("content");
+            let outfits = JSON.parse(localStorage.getItem("outfits")) || [];
+            let outfitsHTML = `<h2 class="text-2xl font-bold text-[#8C6450]">👗 My Outfits</h2><div class="grid grid-cols-2 gap-6 mt-6">`;
+            outfits.forEach(outfit => {
+                outfitsHTML += `
+                    <div class="bg-white p-4 rounded-lg shadow-lg">
+                        <img src="${outfit.top.image}" class="h-24 w-24 inline-block object-cover"> +
+                        <img src="${outfit.bottom.image}" class="h-24 w-24 inline-block object-cover">
+                        <h3 class="text-lg font-semibold mt-2">Outfit</h3>
+                    </div>
+                `;
+            });
+            outfitsHTML += `</div>`;
+            content.innerHTML = outfitsHTML;
+        }
+    </script>
+</body>
+</html>
+

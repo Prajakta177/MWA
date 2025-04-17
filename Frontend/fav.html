@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5EFE7;
+            text-align: center;
+        }
+        header {
+            background-color: #8C6450;
+            color: white;
+            padding: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .favorites-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .favorite-item {
+            background: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #8C6450;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #6B4939;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Your Favorite Clothing</h1>
+    
+    </header>
+
+    <div class="container">
+        <h2>Favorites Collection</h2>
+        <div class="favorites-list" id="favorites-list">
+            <!-- Favorite items will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+            let favoritesList = document.getElementById("favorites-list");
+
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = "<p>No favorite items yet.</p>";
+            } else {
+                favorites.forEach(item => {
+                    let div = document.createElement("div");
+                    div.classList.add("favorite-item");
+                    div.innerHTML = `<p>${item}</p> <button onclick="removeFavorite('${item}')">Remove</button>`;
+                    favoritesList.appendChild(div);
+                });
+            }
+        });
+
+        function removeFavorite(itemName) {
+            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+            favorites = favorites.filter(item => item !== itemName);
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>

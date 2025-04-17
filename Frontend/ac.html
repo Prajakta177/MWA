@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Clothing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5EFE7;
+            text-align: center;
+        }
+        header {
+            background-color: #8C6450;
+            color: white;
+            padding: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .category {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .item {
+            background: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #8C6450;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #6B4939;
+        }
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Add Clothing</h1>
+    </header>
+
+    <div class="container">
+        <h2>Shirts</h2>
+        <div class="category">
+            <div class="item">
+                <img src="t1.jpg" alt="Shirt 1">
+                <button onclick="addToWardrobe('Shirt 1', 't1.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="t2.jpg" alt="Shirt 2">
+                <button onclick="addToWardrobe('Shirt 2', 't2.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="t3.jpg" alt="Shirt 3">
+                <button onclick="addToWardrobe('Shirt 3', 't3.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="t4.jpg" alt="Shirt 4">
+                <button onclick="addToWardrobe('Shirt 4', 't4.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="t5.jpg" alt="Shirt 5">
+                <button onclick="addToWardrobe('Shirt 5', 't5.jpg')">Add</button>
+            </div>
+        </div>
+
+        <h2>Pants</h2>
+        <div class="category">
+            <div class="item">
+                <img src="a1.jpg" alt="Pant 1">
+                <button onclick="addToWardrobe('Pant 1', 'a1.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="a2.jpg" alt="Pant 2">
+                <button onclick="addToWardrobe('Pant 2', 'a2.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="a3.jpg" alt="Pant 3">
+                <button onclick="addToWardrobe('Pant 3', 'a3.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="a4.jpg" alt="Pant 4">
+                <button onclick="addToWardrobe('Pant 4', 'a4.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="a5.jpg" alt="Pant 5">
+                <button onclick="addToWardrobe('Pant 5', 'a5.jpg')">Add</button>
+            </div>
+        </div>
+
+        <h2>Tops</h2>
+        <div class="category">
+            <div class="item">
+                <img src="x1.jpg" alt="Top 1">
+                <button onclick="addToWardrobe('Top 1', 'x1.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="x2.jpg" alt="Top 2">
+                <button onclick="addToWardrobe('Top 2', 'x2.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="x3.png" alt="Top 3">
+                <button onclick="addToWardrobe('Top 3', 'x3.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="x4.jpg" alt="Top 4">
+                <button onclick="addToWardrobe('Top 4', 'x4.jpg')">Add</button>
+            </div>
+            <div class="item">
+                <img src="x5.jpg" alt="Top 5">
+                <button onclick="addToWardrobe('Top 5', 'x5.jpg')">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToWardrobe(itemName, imagePath) {
+            let wardrobe = JSON.parse(localStorage.getItem("wardrobe")) || [];
+            let newItem = { name: itemName, image: imagePath };
+
+            if (!wardrobe.some(item => item.name === itemName)) {
+                wardrobe.push(newItem);
+                localStorage.setItem("wardrobe", JSON.stringify(wardrobe));
+                alert("Item added to wardrobe!");
+            } else {
+                alert("Item already in wardrobe.");
+            }
+        }
+    </script>
+
+</body>
+</html>

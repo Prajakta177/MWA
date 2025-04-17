@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporty Vibes Outfits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5EFE7;
+            text-align: center;
+            color: #8C6450;
+            padding: 20px;
+        }
+        header {
+            background-color: #8C6450;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .gender-select, .outfit-section, .category {
+            margin: 20px 0;
+        }
+        .outfit-section {
+            display: none;
+        }
+        .category {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .grid-item {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .grid-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #D4B29D;
+            border: none;
+            padding: 8px 12px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: black;
+        }
+        .btn:hover {
+            background-color: #C7A17A;
+        }
+        .outfit-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sporty Vibes Outfits</h1>
+        <a href="index.html" style="color: white;">Back to Home</a>
+    </header>
+
+    <div class="container">
+        <p>Get ready to hit the gym or the track with these stylish sporty outfits! Choose your gender below.</p>
+
+        <div class="gender-select">
+            <label for="gender">Select Your Gender:</label>
+            <select id="gender" onchange="showOutfits()">
+                <option value="">--Select--</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+        </div>
+
+        <h2 id="suggestion-message" style="display: none;">Sporty Outfit Suggestions</h2>
+
+        <div id="female-outfits" class="outfit-section">
+            <h3>Sports Bras</h3>
+            <div class="grid">
+                <div class="grid-item"><img src="images/women-sportsbra1.jpg" alt="Sports Bra"><button class="btn" onclick="addToClothing('women-sportsbra1.jpg')">Add</button></div>
+                <div class="grid-item"><img src="images/women-sportsbra2.jpg" alt="Sports Bra"><button class="btn" onclick="addToClothing('women-sportsbra2.jpg')">Add</button></div>
+            </div>
+            <h3>Leggings</h3>
+            <div class="grid">
+                <div class="grid-item"><img src="images/women-leggings1.jpg" alt="Leggings"><button class="btn" onclick="addToClothing('women-leggings1.jpg')">Add</button></div>
+                <div class="grid-item"><img src="images/women-leggings2.jpg" alt="Leggings"><button class="btn" onclick="addToClothing('women-leggings2.jpg')">Add</button></div>
+            </div>
+        </div>
+
+        <div id="male-outfits" class="outfit-section">
+            <h3>T-Shirts</h3>
+            <div class="grid">
+                <div class="grid-item"><img src="images/men-tshirt1.jpg" alt="T-Shirt"><button class="btn" onclick="addToClothing('men-tshirt1.jpg')">Add</button></div>
+                <div class="grid-item"><img src="images/men-tshirt2.jpg" alt="T-Shirt"><button class="btn" onclick="addToClothing('men-tshirt2.jpg')">Add</button></div>
+            </div>
+            <h3>Joggers</h3>
+            <div class="grid">
+                <div class="grid-item"><img src="images/men-joggers1.jpg" alt="Joggers"><button class="btn" onclick="addToClothing('men-joggers1.jpg')">Add</button></div>
+                <div class="grid-item"><img src="images/men-joggers2.jpg" alt="Joggers"><button class="btn" onclick="addToClothing('men-joggers2.jpg')">Add</button></div>
+            </div>
+        </div>
+
+        <div id="outfit-preview" class="outfit-preview" style="display: none;">
+            <h2>Your Custom Outfit</h2>
+            <div id="preview-images"></div>
+        </div>
+    </div>
+
+    <script>
+        function showOutfits() {
+            const gender = document.getElementById("gender").value;
+            document.getElementById("suggestion-message").style.display = gender ? "block" : "none";
+            document.getElementById("female-outfits").style.display = (gender === "female") ? "block" : "none";
+            document.getElementById("male-outfits").style.display = (gender === "male") ? "block" : "none";
+        }
+
+        let selectedClothing = [];
+        function addToClothing(image) {
+            if (selectedClothing.length < 2) {
+                selectedClothing.push(image);
+                updatePreview();
+            } else {
+                alert("You can only add one top and one bottom.");
+            }
+        }
+
+        function updatePreview() {
+            const previewDiv = document.getElementById("preview-images");
+            previewDiv.innerHTML = "";
+            selectedClothing.forEach(img => {
+                const imageElement = document.createElement("img");
+                imageElement.src = "images/" + img;
+                previewDiv.appendChild(imageElement);
+            });
+            document.getElementById("outfit-preview").style.display = "block";
+        }
+    </script>
+</body>
+</html>
