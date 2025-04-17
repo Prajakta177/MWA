@@ -1,0 +1,155 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 110px;
+    line-height: 1.6;
+    padding: 5px 15px 20px 25px;
+	background-image: url('white.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+h1, h2 {
+    color: rgba(26, 174, 188, 0.73);
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+header {
+    background: linear-gradient(350deg, white, rgb(255, 255, 255));
+    color: black;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: rgba(26, 174, 188, 0.73);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+header nav a {
+    transition: opacity 0.3s ease;
+}
+
+header nav a:hover {
+    opacity: 0.8;
+}
+
+section {
+    margin: 20px auto; 
+    padding: 60px 20px;
+    max-width: 1200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #444;
+}
+
+section p {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #666;
+}
+
+.skills-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-item {
+    background: rgba(26, 174, 188, 0.73);
+    color: white;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.skill-item:hover { 
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(37, 117, 252, 0.4);
+}
+
+.project-card {
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form input, form textarea, form button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+form button {
+    background: #4facfe;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background: #00f2fe;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background:rgba(26, 174, 188, 0.73);
+    color: white}
