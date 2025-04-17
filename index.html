@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="entryApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Entry Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body ng-controller="EntryController">
+    <h2>Entry Table</h2>
+    <form ng-submit="addEntry()">
+        <input type="text" ng-model="newEntry.firstName" placeholder="First Name" required>
+        <input type="text" ng-model="newEntry.lastName" placeholder="Last Name" required>
+        <input type="number" ng-model="newEntry.age" placeholder="Age" required>
+        <button type="submit">Add Entry</button>
+    </form>
+    
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+        <tr ng-repeat="entry in entries">
+            <td>{{ entry.firstName }}</td>
+            <td>{{ entry.lastName }}</td>
+            <td>{{ entry.age }}</td>
+        </tr>
+    </table>
+
+    <script>
+        var app = angular.module('entryApp', []);
+        app.controller('EntryController', function($scope) {
+            $scope.entries = [];
+            $scope.newEntry = {};
+
+            $scope.addEntry = function() {
+                $scope.entries.push(angular.copy($scope.newEntry));
+                $scope.newEntry = {};
+            };
+        });
+    </script>
+</body>
+</html>
